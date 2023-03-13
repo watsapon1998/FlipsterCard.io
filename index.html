@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Flipster Demo</title>
+    <title>Flipster Card</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=550, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="demo.css">
     <link rel="stylesheet" href="../dist/jquery.flipster.min.css">
@@ -47,9 +47,10 @@
              transition-delay: 500ms;
 		}
 		 .flipster--infinite-carousel .flipster__item--past-1, .flipster--infinite-carousel .flipster__item--future-1 {
-			 opacity: 0.8;
+			 /*opacity: 0.8;*/
+       opacity: 1;
 			 /*transition-delay: 60ms;*/
-             transition-delay: 300ms;
+       transition-delay: 300ms;
 		}
 		 .flipster--infinite-carousel .flipster__item--current {
 			 opacity: 1;
@@ -80,307 +81,233 @@
 		 .flipster--infinite-carousel .flipster__item--current .flipster__item__content {
 			 transform: translateX(0) rotateY(0deg) scale(1);
 		}
- 
+
+		.flip-items > li {
+		  width: 320px;
+		}
+
+		.fn-review-first-card {
+		  background-color: #f1efff;
+		  padding: 16px 24px 32px 24px;
+		  border-radius: 8px;
+		  position: relative;
+		}
+
+		.fn-review-second-card {
+		  background-color: #c9fbe4;
+		  padding: 16px 24px 32px 24px;
+		  border-radius: 8px;
+		  position: relative;
+		}
+
+		.fn-review-third-card {
+		  background-color: #ffe892;
+		  padding: 16px 24px 32px 24px;
+		  border-radius: 8px;
+		  position: relative;
+		}
+
+		.fn-review-first-card::before {
+		  content: "";
+		  background: url("https://i.imgur.com/efOHN84.png") no-repeat;
+		  background-size: cover;
+		  position: absolute;
+		  width: 40px;
+		  height: 40px;
+		  top: 0;
+		  right: 0;
+		}
+
+		.fn-review-second-card::before {
+		  content: "";
+		  background: url("https://i.imgur.com/SdM9Lzg.png") no-repeat;
+		  background-size: cover;
+		  position: absolute;
+		  width: 40px;
+		  height: 40px;
+		  top: 0;
+		  right: 0;
+		}
+
+		.fn-review-third-card::before {
+		  content: "";
+		  background: url("https://i.imgur.com/CYPIU19.png") no-repeat;
+		  background-size: cover;
+		  position: absolute;
+		  width: 40px;
+		  height: 40px;
+		  top: 0;
+		  right: 0;
+		}
+
+		.fn-rating-section > .fn-rating {
+		  opacity: .7;
+		  font-size: 48px;
+		  font-weight: 500;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: normal;
+		  letter-spacing: normal;
+		  color: #000;
+		}
+
+		.fn-star-section {
+		  display: flex;
+		}
+
+		.fn-star-section > .fn-star {
+		  background: url("https://i.imgur.com/IZbgIxy.png") no-repeat;
+		  background-size: cover;
+		  width: 24px;
+		  height: 24px;
+		  display: block;
+		}
+
+		.fn-star-section > .fn-star:not(:last-child) {
+		  margin-right: 4px;
+		}
+
+		.fn-txt-review-section > .fn-txt-review {
+		  font-size: 24px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: normal;
+		  letter-spacing: normal;
+		  color: #1d1d1d;
+		}
+
+		.fn-footer-review-section {
+		  display: flex;
+		  align-items: center;
+		  justify-content: space-between;
+		}
+
+		.fn-footer-review-section .fn-user-review {
+		  width: 16px;
+		  height: 16px;
+		}
+
+		.fn-footer-review-section .fn-name-user {
+		  opacity: .5;
+		  font-size: 16px;
+		  font-weight: normal;
+		  font-stretch: normal;
+		  font-style: normal;
+		  line-height: normal;
+		  letter-spacing: normal;
+		  color: #000;
+		}
+
+		.fn-footer-review-section > .fn-status-review {
+		  width: 40px;
+		  height: 40px;
+		}
+		/* spacing */
+		.pr4 {
+		  padding-right: 4px;
+		}
+
+		.pb8 {
+		  padding-bottom: 8px;
+		}
+
+		.pb32 {
+		  padding-bottom: 32px;
+		}
+
+		.pb52 {
+		  padding-bottom: 52px;
+		}
 	</style>
 </head>
 <body>
-<header class="main-header">
-    <h1>jQuery Flipster</h1>
-    <iframe src="https://ghbtns.com/github-btn.html?user=drien&repo=jquery-flipster&type=star&count=true" frameborder="0" scrolling="0" width="90px" height="20px"></iframe>
-    <a href="http://libscore.com/#$.fn.flipster" target="_blank"><img src="http://api.libscore.com/badge/$.fn.flipster.svg"></a>
-
-    <nav class="main-header__nav" role="navigation">
-        <a href="#demo-default">Default Settings (Coverflow)</a>
-        <a href="#demo-carousel">Carousel</a>
-        <a href="#demo-wheel">Wheel</a>
-        <a href="#demo-flat">Flat</a>
-    </nav>
-</header>
-
-<article id="intro" class="intro">
-    <p>jQuery Flipster is a CSS3 3D transform-based jQuery plugin built to replicate the familiar 'cover flow' effect, but also supports a variety of styles. Not only is it gorgeous to look at, Flipster is also:</p>
-
-    <ul>
-        <li><strong>Responsive</strong> Automatically centers and scales to fit the area provided.</li>
-        <li><strong>Touch Friendly</strong> Swipe between items on touch devices without interrupting scroll.</li>
-        <li><strong>Lightweight</strong> Javascript and CSS combined are only 5kb gzipped (13kb without gzip). Only dependency is jQuery.</li>
-        <li><strong>Customizable</strong> Four built in styles (coverflow, carousel, wheel and flat) with plenty of options to configure Flipster the way you want</li>
-    </ul>
-
-    <p>But don't take our word for it. Check out the demos below, or <a href="https://github.com/drien/jquery-flipster">download from GitHub</a> to try it yourself.</p>
-</article>
-
-<article id="demo-default" class="demo">
-
-    <h2>Default Settings (Coverflow)</h2>
-
-    <div id="coverflow">
-        <ul class="flip-items">
-            <li data-flip-title="Red">
-                <img src="img/text1.gif">
-            </li>
-            <li data-flip-title="Razzmatazz" data-flip-category="Purples">
-                <img src="img/text2.gif">
-             </li>
-            <li data-flip-title="Deep Lilac" data-flip-category="Purples">
-                <img src="img/text3.gif">
-            </li>
-            <li data-flip-title="Daisy Bush" data-flip-category="Purples">
-                <img src="img/text4.gif">
-            </li>
-            <li data-flip-title="Cerulean Blue" data-flip-category="Blues">
-                <img src="img/text5.gif">
-            </li>
-            <li data-flip-title="Dodger Blue" data-flip-category="Blues">
-                <img src="img/text6.gif">
-            </li>
-            <li data-flip-title="Cyan" data-flip-category="Blues">
-                <img src="img/text7.gif">
-            </li>
-            <li data-flip-title="Robin's Egg" data-flip-category="Blues">
-                <img src="img/text8.gif">
-            </li>
-            <li data-flip-title="Deep Sea" data-flip-category="Greens">
-                <img src="img/text9.gif">
-            </li>
-            <li data-flip-title="Apple" data-flip-category="Greens">
-                <img src="img/text10.gif">
-            </li>
-        </ul>
-    </div>
-
-<script>
-    var coverflow = $("#coverflow").flipster();
-</script>
-
-<pre class="code">$("#coverflow").flipster();</pre>
-
-</article>
-
-<article id="demo-carousel" class="demo">
-
-    <h2>Flipster Carousel</h2>
-
-    <div id="carousel">
-        <ul class="flip-items">
-            <li data-flip-title="Red">
-                <img src="img/text1.gif">
-            </li>
-            <li data-flip-title="Razzmatazz" data-flip-category="Purples">
-                <img src="img/text2.gif">
-             </li>
-            <li data-flip-title="Deep Lilac" data-flip-category="Purples">
-                <img src="img/text3.gif">
-            </li>
-            <!--<li data-flip-title="Daisy Bush" data-flip-category="Purples">
-                <img src="img/text4.gif">
-            </li>
-            <li data-flip-title="Cerulean Blue" data-flip-category="Blues">
-                <img src="img/text5.gif">
-            </li>
-            <li data-flip-title="Dodger Blue" data-flip-category="Blues">
-                <img src="img/text6.gif">
-            </li>
-            <li data-flip-title="Cyan" data-flip-category="Blues">
-                <img src="img/text7.gif">
-            </li>
-            <li data-flip-title="Robin's Egg" data-flip-category="Blues">
-                <img src="img/text8.gif">
-            </li>
-            <li data-flip-title="Deep Sea" data-flip-category="Greens">
-                <img src="img/text9.gif">
-            </li>
-            <li data-flip-title="Apple" data-flip-category="Greens">
-                <img src="img/text10.gif">
-            </li>
-            <li data-flip-title="Pistachio" data-flip-category="Greens">
-                <img src="img/text11.gif">
-            </li>
-            <li data-flip-title="Pear" data-flip-category="Greens">
-                <img src="img/text12.gif">
-            </li>
-            <li data-flip-title="Bright Sun" data-flip-category="Yellows">
-                <img src="img/text13.gif">
-            </li>
-            <li data-flip-title="Mikado" data-flip-category="Yellows">
-                <img src="img/text14.gif">
-            </li>-->
-        </ul>
-    </div>
-
-<script>
-    var carousel = $("#carousel").flipster({
-        style: 'coverflow',
-        spacing: -0.5,
-        nav: false,
-        buttons:   false,
-		loop: true,
-		start: 'center',
-		scrollwheel: false,
-		touch: true,
-    });
-</script>
-
-<pre class="code">$("#carousel").flipster({
-    style: 'carousel',
-    spacing: -0.5,
-    nav: true,
-    buttons: true,
-});</pre>
-
-</article>
-
-
-<article id="demo-wheel" class="demo">
-
-    <h2>Flipster Wheel</h2>
-
-    <div id="wheel">
-        <ul>
-            <li data-flip-title="Red">
-                <img src="img/text1.gif">
-            </li>
-            <li data-flip-title="Razzmatazz" data-flip-category="Purples">
-                <img src="img/text2.gif">
-             </li>
-            <li data-flip-title="Deep Lilac" data-flip-category="Purples">
-                <img src="img/text3.gif">
-            </li>
-            <li data-flip-title="Daisy Bush" data-flip-category="Purples">
-                <img src="img/text4.gif">
-            </li>
-            <li data-flip-title="Cerulean Blue" data-flip-category="Blues">
-                <img src="img/text5.gif">
-            </li>
-            <li data-flip-title="Dodger Blue" data-flip-category="Blues">
-                <img src="img/text6.gif">
-            </li>
-            <li data-flip-title="Cyan" data-flip-category="Blues">
-                <img src="img/text7.gif">
-            </li>
-            <li data-flip-title="Robin's Egg" data-flip-category="Blues">
-                <img src="img/text8.gif">
-            </li>
-            <li data-flip-title="Deep Sea" data-flip-category="Greens">
-                <img src="img/text9.gif">
-            </li>
-            <li data-flip-title="Apple" data-flip-category="Greens">
-                <img src="img/text10.gif">
-            </li>
-            <li data-flip-title="Pistachio" data-flip-category="Greens">
-                <img src="img/text11.gif">
-            </li>
-            <li data-flip-title="Pear" data-flip-category="Greens">
-                <img src="img/text12.gif">
-            </li>
-            <li data-flip-title="Bright Sun" data-flip-category="Yellows">
-                <img src="img/text13.gif">
-            </li>
-            <li data-flip-title="Mikado" data-flip-category="Yellows">
-                <img src="img/text14.gif">
-            </li>
-        </ul>
-    </div>
-
-<script>
-    var wheel = $("#wheel").flipster({
-        style: 'wheel',
-        spacing: 0
-    });
-</script>
-
-<pre class="code">$("#wheel").flipster({
-    style: 'wheel',
-    spacing: 0
-});</pre>
-</article>
-
-
-<article id="demo-flat" class="demo">
-
-    <h2>Flipster Flat</h2>
-
-    <div id="flat">
-        <ul>
-            <li data-flip-title="Red">
-                <img src="img/text1.gif">
-            </li>
-            <li data-flip-title="Razzmatazz" data-flip-category="Purples">
-                <img src="img/text2.gif">
-             </li>
-            <li data-flip-title="Deep Lilac" data-flip-category="Purples">
-                <img src="img/text3.gif">
-            </li>
-            <li data-flip-title="Daisy Bush" data-flip-category="Purples">
-                <img src="img/text4.gif">
-            </li>
-            <li data-flip-title="Cerulean Blue" data-flip-category="Blues">
-                <img src="img/text5.gif">
-            </li>
-            <li data-flip-title="Dodger Blue" data-flip-category="Blues">
-                <img src="img/text6.gif">
-            </li>
-            <li data-flip-title="Cyan" data-flip-category="Blues">
-                <img src="img/text7.gif">
-            </li>
-            <li data-flip-title="Robin's Egg" data-flip-category="Blues">
-                <img src="img/text8.gif">
-            </li>
-            <li data-flip-title="Deep Sea" data-flip-category="Greens">
-                <img src="img/text9.gif">
-            </li>
-            <li data-flip-title="Apple" data-flip-category="Greens">
-                <img src="img/text10.gif">
-            </li>
-        </ul>
-    </div>
-
-<script>
-    var flat = $("#flat").flipster({
-        style: 'flat',
-        spacing: -0.25
-    });
-	
-
-</script>
-
-<pre class="code">$("#flat").flipster({
-    style: 'flat',
-    spacing: -0.25
-});</pre>
-
-</article>
-
-    <div class="flipster">
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="flipster">
         <ul class="flip-items">
             <li id="1">
-                <img src="http://brokensquare.com/Code/jquery-flipster/demo/img/text1.gif">
+                <div class="fn-review-first-card">
+                  <div class="fn-rating-section pb8">
+                    <span class="fn-rating">4.8</span>
+                    <span class="fn-full-rating">/5</span>
+                  </div>
+                  <div class="fn-star-section pb32">
+                    <span class="fn-star"></span>
+                    <span class="fn-star"></span>
+                    <span class="fn-star"></span>
+                    <span class="fn-star"></span>
+                    <span class="fn-star"></span>
+                  </div>
+                  <div class="fn-txt-review-section pb52">
+                    <span class="fn-txt-review noto-l-reg">การซื้อประกันครั้งนี้รวดเร็วดี รายละเอียดชัดเจนดีครับ</span>
+                  </div>
+                  <div class="fn-footer-review-section">
+                    <div>
+                    <img src="https://i.imgur.com/WssKQkb.png" alt="user" class="img-fluid fn-user-review">
+                    <span class="fn-name-user noto-xxs-reg">***พงศ์ ***การสกุล</span>
+                    </div>
+                    <img src="https://i.imgur.com/euEJ7mE.png" alt="status-review" class="img-fluid fn-status-review">
+                  </div>
+                </div>
             </li>
             <li id="2">
-                <img src="http://brokensquare.com/Code/jquery-flipster/demo/img/text2.gif">
+                <div class="fn-review-second-card">
+                  <div class="fn-rating-section pb8">
+                    <span class="fn-rating">5.0</span>
+                    <span class="fn-full-rating">/5</span>
+                  </div>
+                  <div class="fn-star-section pb32">
+                    <span class="fn-star"></span>
+                    <span class="fn-star"></span>
+                    <span class="fn-star"></span>
+                    <span class="fn-star"></span>
+                    <span class="fn-star"></span>
+                  </div>
+                  <div class="fn-txt-review-section pb52">
+                    <span class="fn-txt-review noto-l-reg">ซื้อง่าย ราคาดีมากครับ สามารถเลือกความคุ้มครอง
+ที่ต้องการได้เอง</span>
+                  </div>
+                  <div class="fn-footer-review-section">
+                    <div>
+                    <img src="https://i.imgur.com/WssKQkb.png" alt="user" class="img-fluid fn-user-review">
+                    <span class="fn-name-user noto-xxs-reg">***โรจน์ ***โสภณ</span>
+                    </div>
+                    <img src="https://i.imgur.com/8CsL9gN.png" alt="status-review" class="img-fluid fn-status-review">
+                  </div>
+                </div>
              </li>
             <li id="3">
-                <img src="http://brokensquare.com/Code/jquery-flipster/demo/img/text3.gif">
+                <div class="fn-review-third-card">
+                  <div class="fn-rating-section pb8">
+                    <span class="fn-rating">4.9</span>
+                    <span class="fn-full-rating">/5</span>
+                  </div>
+                  <div class="fn-star-section pb32">
+                    <span class="fn-star"></span>
+                    <span class="fn-star"></span>
+                    <span class="fn-star"></span>
+                    <span class="fn-star"></span>
+                    <span class="fn-star"></span>
+                  </div>
+                  <div class="fn-txt-review-section pb52">
+                    <span class="fn-txt-review noto-l-reg">ราคายุติธรรม มีแผนประกันเยอะดี ให้เปรียบเทียบ Good Service</span>
+                  </div>
+                  <div class="fn-footer-review-section">
+                    <div>
+                    <img src="https://i.imgur.com/WssKQkb.png" alt="user" class="img-fluid fn-user-review">
+                    <span class="fn-name-user noto-xxs-reg">***ริณ ***สุทธิ์เมธา</span>
+                    </div>
+                    <img src="https://i.imgur.com/8CsL9gN.png" alt="status-review" class="img-fluid fn-status-review">
+                  </div>
+                </div>
             </li>
-            <!--<li id="4">
-                <img src="http://brokensquare.com/Code/jquery-flipster/demo/img/text4.gif">
-            </li>
-            <li id="5">
-                <img src="http://brokensquare.com/Code/jquery-flipster/demo/img/text5.gif">
-            </li>-->
-<!--            
-            <li id="6">
-                <img src="http://brokensquare.com/Code/jquery-flipster/demo/img/text6.gif">
-            </li>
-            <li id="7">
-                <img src="http://brokensquare.com/Code/jquery-flipster/demo/img/text7.gif">
-            </li>-->
         </ul>
+      </div>
     </div>
-
-<a href="https://github.com/drien/jquery-flipster/"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
-
-
+  </div>
+</div>
 <script>
 		/* jshint browser: true, jquery: true, devel: true */
 /* global window, jQuery */
@@ -1088,6 +1015,7 @@ flipContainer.flipster({
   style: 'infinite-carousel',
   spacing: 0,
   scrollwheel: false,
+  touch: true,
   //nav: 'after',
   buttons: false
 });
